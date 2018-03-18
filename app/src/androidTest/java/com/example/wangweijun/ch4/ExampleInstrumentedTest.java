@@ -1,4 +1,4 @@
-package com.example.wangweijun.java_performance_opt;
+package com.example.wangweijun.ch4;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
