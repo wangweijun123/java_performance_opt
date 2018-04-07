@@ -99,9 +99,6 @@ TreeSet (封装了TreeMap)
 性能优化，数据结构的选择大方向
 
 
-
-
-
 4 Queue(单向列表,只有next) 容量，也就是最大值，超过这个值异常，或者callback策略
 
 BlockingQueue 简写线程之间的通信
@@ -113,3 +110,20 @@ Deque(双向列表,因为Node{pre与next节点引用},由节点决定)
 LinkedDeque, ArrayDeque, 线程不安全实现类
 
 ConcurrentLinkedDeque 支持多线程
+
+
+java 内存模型
+
+主内存与工作内存的数据传送原理,从主内存拷贝数据到工作内存，注意并不是原子操作
+所以由线程安全的问题
+
+volatile
+
+1, 可见性: 一个线程对变量的修改，可以即时反应到其他线程, 很适合对volatile boolean running修饰
+
+
+
+
+
+
+
