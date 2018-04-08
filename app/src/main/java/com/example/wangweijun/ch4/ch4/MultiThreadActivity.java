@@ -3,6 +3,7 @@ package com.example.wangweijun.ch4.ch4;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.example.wangweijun.ch4.R;
 
@@ -17,5 +18,9 @@ public class MultiThreadActivity extends Activity{
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_multi_thread);
+    }
+
+    public void stopTheWorld(View v) {
+        StopWorldTest.main();
     }
 }
