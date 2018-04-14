@@ -195,4 +195,19 @@ public class ArithmeticTest {
             System.out.println("没找到");
         }
     }
+
+
+    @Test
+    public void test7() {
+        // 1*1*1 + 2*2*2 + ..... + 10*10*10 + n * n * n
+        System.out.println(lifang(3));
+    }
+
+    public int lifang(int n) {
+        int result = 0;
+        for (int i=1; i<=n; i++) {
+            result = result + i * i * i;
+        }
+        return result;
+    }
 }
