@@ -11,6 +11,11 @@ public class PerformanceApplication extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
+        try {
+            Thread.sleep(8000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         registerActivityLifecycleCallbacks(new ActivitiesLifecycleListener());
     }
 }

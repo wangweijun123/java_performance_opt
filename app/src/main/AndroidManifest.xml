@@ -10,13 +10,18 @@
         android:supportsRtl="true"
         android:name=".ch4.PerformanceApplication"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.wangweijun.ch4.MainActivity" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize">
+        <activity android:name="com.example.wangweijun.ch4.WelcomeActivity"
+            android:configChanges="keyboardHidden|orientation|screenLayout|screenSize"
+            android:theme="@style/AppTheme.WelcomeStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name="com.example.wangweijun.ch4.MainActivity"/>
         <activity android:name=".ch4.MultiThreadActivity"/>
     </application>
 
