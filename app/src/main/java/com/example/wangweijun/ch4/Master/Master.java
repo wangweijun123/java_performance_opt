@@ -27,10 +27,8 @@ public class Master {
 
     CallBack callBack;
 
-    int result = 0;
-
     public interface CallBack {
-        void onComplete(int result);
+        void onComplete(Object result);
     }
 
     public Master(CallBack callBack) {
@@ -51,16 +49,8 @@ public class Master {
 
     public void notityResult() {
         if (resultMap.size() == taskCount) {
-            if (resultMap.size() > 0) {
-                Iterator<Object> iterator1 = resultMap.values().iterator();
-                while (iterator1.hasNext()) {
-                    Object next = iterator1.next();
-                    result += (int) next;
-                    iterator1.remove();
-                }
-            }
             if (callBack != null) {
-                callBack.onComplete(result);
+                callBack.onComplete(resultMap);
             }
         }
     }

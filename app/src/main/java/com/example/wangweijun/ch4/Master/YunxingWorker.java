@@ -9,6 +9,11 @@ public class YunxingWorker extends Worker {
 
     @Override
     public Object handle(int input) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return true;
     }
 }

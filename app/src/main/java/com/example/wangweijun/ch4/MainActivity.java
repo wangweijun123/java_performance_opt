@@ -8,24 +8,45 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.wangweijun.ch4.ch4.MultiThreadActivity;
 
+import org.w3c.dom.Text;
+
+import java.lang.ref.WeakReference;
+
 public class MainActivity extends AppCompatActivity {
 
-    private static Handler handler = new Handler() {
+   private TextView title;
+    private MyHandler myHandler;
+
+    private static class MyHandler extends Handler {
+        WeakReference<MainActivity> weakReference;
+        MyHandler(MainActivity mainActivity) {
+            weakReference = new WeakReference<>(mainActivity);
+        }
+
         @Override
         public void handleMessage(Message msg) {
-
-//            Log.i("wang", "what :"+msg.what);
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    MainActivity mainActivity = weakReference.get();
+                    if (mainActivity != null) {
+                        mainActivity.title.setText("收到了msg");
+                    }
+                    break;
+            }
         }
-    };
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        title = (TextView)findViewById(R.id.title);
+        myHandler = new MyHandler(this);
         int depth = computeHierarchyDepth(findViewById(R.id.root));
         Log.i("wang", "final depth:"+depth);
 
@@ -64,6 +85,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendMsg(View v){
-        handler.sendEmptyMessage(1);
+        myHandler.sendEmptyMessage(1);
     }
 }
