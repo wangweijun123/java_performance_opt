@@ -14,6 +14,9 @@ import java.io.RandomAccessFile;
 import java.nio.CharBuffer;
 import java.nio.IntBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * @author Administrator
@@ -145,10 +148,13 @@ public class TestMapBuffer {
 	 */
 	@Test
 	public void testMappedWriteStr() throws IOException {
+//		String fileName = "temp_mapped_char.txt";
+		String fileName = "d:\\temp_buffer.tmp";
+
 		int charCount = 10;
 		long starttime = System.currentTimeMillis();
 		RandomAccessFile randomAccessFile = new RandomAccessFile
-				("temp_mapped_char.txt", "rw");
+				(fileName, "rw");
 		FileChannel fc = randomAccessFile.getChannel();
 		int writeCount = 5;
 		int currentWriteCount = 0;
@@ -168,7 +174,20 @@ public class TestMapBuffer {
 		if (fc != null) {
 			fc.close();
 		}
+		if (randomAccessFile != null) {
+			randomAccessFile.close();
+		}
 		long endtime = System.currentTimeMillis();
 		System.out.println("testMappedWriteChar:"+(endtime-starttime)+"ms");
+//		System.out.println("testMappedWriteChar:"+randomAccessFile.);
+
+		Path source = FileSystems.getDefault().getPath(fileName);
+		/*Path target = source.resolveSibling("duanxia.txt");*/
+		System.out.println(source.getFileName());
+
+//		Path source = ...
+		Files.move(source, source.resolveSibling("d:\\temp_buffer_copy.tmp"));
+
+//		Files.move(source, target);
 	}
 }
