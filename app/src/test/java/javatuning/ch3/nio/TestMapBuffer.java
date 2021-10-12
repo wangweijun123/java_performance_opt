@@ -18,6 +18,8 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+
 /**
  * @author Administrator
  * 
@@ -147,7 +149,7 @@ public class TestMapBuffer {
 	 * @throws IOException
 	 */
 	@Test
-	public void testMappedWriteStr() throws IOException {
+	public void testMappedWriteStr() throws Exception {
 //		String fileName = "temp_mapped_char.txt";
 		String fileName = "d:\\temp_buffer.tmp";
 
@@ -179,15 +181,36 @@ public class TestMapBuffer {
 		}
 		long endtime = System.currentTimeMillis();
 		System.out.println("testMappedWriteChar:"+(endtime-starttime)+"ms");
-//		System.out.println("testMappedWriteChar:"+randomAccessFile.);
 
-		Path source = FileSystems.getDefault().getPath(fileName);
-		/*Path target = source.resolveSibling("duanxia.txt");*/
+		Thread.sleep(1000);
+
+
+		/*Path source = FileSystems.getDefault().getPath(fileName);
+		*//*Path target = source.resolveSibling("duanxia.txt");*//*
 		System.out.println(source.getFileName());
 
-//		Path source = ...
-		Files.move(source, source.resolveSibling("d:\\temp_buffer_copy.tmp"));
+		// java.nio.file.FileSystemException: d:\temp_buffer.tmp -> d:\temp_buffer_copy.tmp:
+		// 另一个程序正在使用此文件，进程无法访问。
+		Files.move(source, source.resolveSibling("temp_buffer_copy.tmp"));*/
+	}
 
-//		Files.move(source, target);
+	@Test
+	public void renameFile() throws IOException {
+//		String fileName = "temp_mapped_char.txt";
+		String fileName = "d:\\temp_buffer.tmp";
+		Path source = FileSystems.getDefault().getPath(fileName);
+		// 注意目标文件不要加 目录哈
+		Files.move(source, source.resolveSibling("temp_buffer_copy.tmp"));
+	}
+
+	@Test
+	public void moveFile2NewDir() throws IOException {
+//		String fileName = "temp_mapped_char.txt";
+		String fileName = "d:\\temp_buffer.tmp";
+		String newdirPath = "d:\\testdir";
+		Path source = FileSystems.getDefault().getPath(fileName);
+		// 注意目标文件不要加 目录哈
+		Path newdir = FileSystems.getDefault().getPath(newdirPath);
+		Files.move(source, newdir.resolve(source.getFileName()), REPLACE_EXISTING);
 	}
 }
