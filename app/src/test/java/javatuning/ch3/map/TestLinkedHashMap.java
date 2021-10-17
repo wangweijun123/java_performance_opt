@@ -21,6 +21,10 @@ public class TestLinkedHashMap {
 		map.put("7", "gg");
 		map.put("8", "hh");
 		map.put("9", "jj");
+		map.put("10", "kk");
+		map.put("11", "ll");
+		map.put("12", "oo");
+		map.put("13", "pp");
 
         map.get("3");
         for (Iterator iterator = map.keySet().iterator(); iterator.hasNext();) {
@@ -61,6 +65,8 @@ public class TestLinkedHashMap {
 		}
 	}
 
+	// 两种LinkedHashMap顺序 accessOrder: false 是按照时间顺序输出 accessOrder:true 按照访问顺序输出
+
 	@Test
 	public void testLinkedHashMapAccessOrderFalse() {
 		map=new LinkedHashMap<String, String>(16,0.75f,false);
@@ -69,7 +75,7 @@ public class TestLinkedHashMap {
 
 	@Test
 	public void testHashMap() {
-		map=new HashMap<String,String>();
+		map=new HashMap<String,String>();// 别误导哦，输出是无序的
 		testOutputMap("testHashMap");
 	}
 }

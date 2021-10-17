@@ -13,6 +13,9 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -73,6 +76,24 @@ public class WelcomeActivity extends AppCompatActivity {
                 try {
                     testMappedWriteStr();
                     renameFile();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    public void testList(View view) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+//                    List<Integer> l=new LinkedList();
+                		List<Integer> l=new ArrayList();
+                    for (int i = 0; i < 18; i++) {
+                            l.add(i);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

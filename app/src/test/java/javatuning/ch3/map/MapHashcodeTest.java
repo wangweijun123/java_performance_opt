@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class MapHashcodeTest {
 	public static class GoodHash{
@@ -38,7 +39,7 @@ public class MapHashcodeTest {
 			map.get(key);
 		}
 		long endtime=System.currentTimeMillis();
-		System.out.println("testGetGoodHash"+": "+(endtime-starttime));
+		System.out.println("testGetGoodHash"+": "+(endtime-starttime));// 1ms
 	}
 	
 	
@@ -55,7 +56,7 @@ public class MapHashcodeTest {
 			map.get(key);
 		}
 		long endtime=System.currentTimeMillis();
-		System.out.println("testGetBadHash"+": "+(endtime-starttime) + ", size:"+map.size());
+		System.out.println("testGetBadHash"+": "+(endtime-starttime) + ", size:"+map.size());// testGetBadHash: 1573, size:10000
 	}
 
 
@@ -75,14 +76,18 @@ public class MapHashcodeTest {
 		public Person(String name){
 			this.name=name;
 		}
+
 		@Override
-		public int hashCode(){
-			return name.hashCode();
+		public int hashCode() {
+			return Objects.hash(name);
 		}
 
 		@Override
-		public boolean equals(Object obj) {
-			return name.equals(((Person)obj).name);
+		public boolean equals(Object o) {
+			if (this == o) return true;
+			if (o == null || getClass() != o.getClass()) return false;
+			Person person = (Person) o;
+			return name.equals(person.name);
 		}
 	}
 }
