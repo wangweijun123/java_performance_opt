@@ -18,12 +18,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class WelcomeActivity extends AppCompatActivity {
-
+    LooperThread looperThread;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        looperThread = new LooperThread("wangweijun");
+        looperThread.start();
     }
 
     public void testMappedWriteStr() throws Exception {
@@ -99,5 +100,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    public void testLooper(View view) {
+        looperThread.sendMessage(111);
     }
 }
