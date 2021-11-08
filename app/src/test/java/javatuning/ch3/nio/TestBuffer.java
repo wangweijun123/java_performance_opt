@@ -19,7 +19,7 @@ public class TestBuffer {
 			b.put((byte)i);
 		}
 		System.out.println("limit="+b.limit()+" capacity="+b.capacity()+" position="+b.position());
-		b.flip();// 模式反转(从读模式到写模式，或者从写模式到读模式,那position, limit的变化)
+		b.flip();
 		System.out.println("limit="+b.limit()+" capacity="+b.capacity()+" position="+b.position());
 		for(int i=0;i<5;i++){
 			System.out.print(b.get());			

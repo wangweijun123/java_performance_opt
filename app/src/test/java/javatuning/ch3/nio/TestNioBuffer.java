@@ -26,7 +26,6 @@ public class TestNioBuffer extends TestMapBuffer {
 	}
 	
 	/**
-	 * 使用buffer直接写文件
 	 * @throws IOException
 	 */
 	@Test

@@ -63,4 +63,9 @@ public class StopWorldTest {
 			e.printStackTrace();
 		}
 	}
+
+	@Test
+	public void main2(){
+		Object o = new Object();
+	}
 }

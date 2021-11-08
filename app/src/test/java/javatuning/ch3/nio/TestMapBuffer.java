@@ -27,7 +27,11 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 public class TestMapBuffer {
 	protected static int numOfInts = 4*1000*1000;
 
-
+	@Test
+	public void testReadWriteNoClose() throws IOException {
+		testStreamWrite();
+		testStreamRead();
+	}
 	
 	@Test
 	public void testStreamWrite() throws IOException {
@@ -213,4 +217,21 @@ public class TestMapBuffer {
 		Path newdir = FileSystems.getDefault().getPath(newdirPath);
 		Files.move(source, newdir.resolve(source.getFileName()), REPLACE_EXISTING);
 	}
+
+	@Test
+	public void testStreamWrite2() throws IOException {
+		long starttime = System.currentTimeMillis();
+		DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(new File("temp_stream.txt"))));
+		for(int i = 0; i < numOfInts; i++){
+			dos.writeInt(i);
+		}
+		if(dos != null){
+			dos.close();
+		}
+		long endtime = System.currentTimeMillis();
+		// testStreamWrite:290ms
+		System.out.println("testStreamWrite:"+(endtime-starttime)+"ms");
+	}
+
+
 }

@@ -4,7 +4,6 @@ public class SerSingleton implements java.io.Serializable{
 	String name;
 	
 	private SerSingleton() {
-		//创建单例的过程可能会比较慢
 		System.out.println("Singleton is create");
 		name="SerSingleton";
 	}
@@ -18,7 +17,7 @@ public class SerSingleton implements java.io.Serializable{
 		System.out.println("createString in Singleton");
 	}
 
-	private Object readResolve(){// 阻止新的实例生成
+	private Object readResolve(){
         return instance;
     }
 }

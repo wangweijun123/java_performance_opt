@@ -52,7 +52,7 @@ public class SpaceSort {
 		int max = array[0];
 		int l = array.length;
 		for (i = 1; i < l; i++) {
-			if (array[i] > max)	{// 找出最大值
+			if (array[i] > max)	{
 				max = array[i];
 			}
 		}

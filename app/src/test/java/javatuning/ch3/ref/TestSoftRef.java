@@ -7,7 +7,9 @@ import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 
 /**
- * JVM根据当前堆的使用情况，当接近最大值时，才会自动回收软引用指向的对象-->适合做缓存
+ * JVM根据当前堆的使用情况，当接近最大值时，才会自动回收软引用包裹的对象-->适合做缓存
+ *
+ *
  */
 public class TestSoftRef {
 
@@ -45,6 +47,10 @@ public class TestSoftRef {
 
 	@Test
 	public void test() throws InterruptedException {
+		// 普通对象，软引用对象，只是这个软引用对象包裹了这个普通对象
+		// 1 去除强引用， 2 只有这个软的包裹他了，
+		// 3 分配一个大内存，接近测试的分配堆内存，破死他去gc，如果哪个普通对象被回收了
+		// 会进入引用队列 ，调用finizal函数，会背认为回收了
 		MyObject obj=new MyObject();
 		softQueue = new ReferenceQueue<MyObject>();
 		SoftReference<MyObject> softRef=new SoftReference<MyObject>(obj,softQueue);

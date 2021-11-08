@@ -2,7 +2,6 @@ package javatuning.ch2.singleton;
 
 public class SingletonFactory {
 	private SingletonFactory() {
-		//创建单例的过程可能会比较慢
 		System.out.println("Singleton is create");
 	}
 

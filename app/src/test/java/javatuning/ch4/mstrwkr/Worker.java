@@ -25,12 +25,9 @@ public class Worker implements Runnable{
 	@Override
 	public void run() {
 		while (true) {
-			//获取子任务
 			Object input = workQueue.poll();
 			if (input == null) break;
-			//处理子任务
 			Object re=handle(input);
-			//将处理结果写入结果集
 			resultMap.put(Integer.toString(input.hashCode()), re);
 		}
 	}

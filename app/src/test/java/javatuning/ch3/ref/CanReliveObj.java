@@ -18,18 +18,18 @@ public class CanReliveObj {
 		System.gc();
 		Thread.sleep(1000);
 		if(obj==null){
-			System.out.println("obj ÊÇ null");
+			System.out.println("obj æ˜¯ null");
 		}else{
-			System.out.println("obj ¿ÉÓÃ");
+			System.out.println("obj å¯ç”¨");
 		}
-		System.out.println("µÚ¶ş´Îgc");
+		System.out.println("ç¬¬äºŒæ¬¡gc");
 		//obj=null;
 		System.gc();
 		Thread.sleep(1000);
 		if(obj==null){
-			System.out.println("obj ÊÇ null");
+			System.out.println("obj æ˜¯ null");
 		}else{
-			System.out.println("obj ¿ÉÓÃ");
+			System.out.println("obj å¯ç”¨");
 		}
 	}
 }
